@@ -1,0 +1,79 @@
+:root {
+  --bg: #f7efe3;
+  --surface: #fff8ef;
+  --border: rgba(120, 92, 61, 0.2);
+  --brand: #c65724;
+  --brand-strong: #8e2f16;
+  --text-strong: #24160f;
+  --text-muted: #66503e;
+  --text-soft: #8b6f58;
+  --shadow-soft:
+    0 30px 80px rgba(83, 44, 18, 0.12),
+    0 10px 24px rgba(83, 44, 18, 0.08);
+  --sans: 'Sora', 'Trebuchet MS', sans-serif;
+  --heading: 'Space Grotesk', 'Avenir Next', sans-serif;
+  font: 16px/1.55 var(--sans);
+  color: var(--text-muted);
+  background:
+    radial-gradient(circle at top left, rgba(242, 174, 73, 0.28), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(198, 87, 36, 0.18), transparent 30%),
+    linear-gradient(180deg, #fff8ef 0%, #f7efe3 42%, #f3e7d8 100%);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--text-strong);
+  font-family: var(--heading);
+  line-height: 0.98;
+}
+
+h1 {
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  letter-spacing: -0.05em;
+}
+
+p {
+  color: inherit;
+}
