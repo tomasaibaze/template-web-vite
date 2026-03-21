@@ -1,6 +1,6 @@
 const env = import.meta.env
 
-const apiBaseUrl = (env.NEXT_PUBLIC_API_URL || 'http://localhost:4004').replace(
+const apiBaseUrl = (env.VITE_API_URL || 'http://localhost:4004').replace(
   /\/$/,
   '',
 )
