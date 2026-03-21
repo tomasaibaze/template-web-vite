@@ -1,7 +1,52 @@
-import { useUser } from '@clerk/clerk-react'
+import { useEffect, useState } from 'react'
+import { useAuth, useUser } from '@clerk/clerk-react'
+import { getCurrentUser } from '../lib/api.js'
 
 function DashboardPage() {
-  const { user } = useUser()
+  const { user, isLoaded } = useUser()
+  const { getToken } = useAuth()
+  const [backendUser, setBackendUser] = useState(null)
+  const [syncStatus, setSyncStatus] = useState('idle')
+  const [syncError, setSyncError] = useState('')
+
+  useEffect(() => {
+    if (!isLoaded || !user) {
+      return
+    }
+
+    let cancelled = false
+
+    async function syncBackendUser() {
+      try {
+        setSyncStatus('loading')
+        setSyncError('')
+
+        const token = await getToken()
+
+        if (!token) {
+          throw new Error('Clerk did not return a session token')
+        }
+
+        const payload = await getCurrentUser(token)
+
+        if (!cancelled) {
+          setBackendUser(payload.user)
+          setSyncStatus('success')
+        }
+      } catch (error) {
+        if (!cancelled) {
+          setSyncError(error.message)
+          setSyncStatus('error')
+        }
+      }
+    }
+
+    syncBackendUser()
+
+    return () => {
+      cancelled = true
+    }
+  }, [getToken, isLoaded, user])
 
   return (
     <section className="dashboard-layout">
@@ -12,8 +57,8 @@ function DashboardPage() {
           active.
         </h1>
         <p className="hero-text">
-          This route only renders for authenticated users and uses Clerk session
-          state from the Vite app.
+          This route only renders for authenticated users, gets a Clerk session
+          token, and syncs the authenticated user against the API.
         </p>
       </div>
 
@@ -36,7 +81,33 @@ function DashboardPage() {
               : 'Today'}
           </strong>
         </article>
+
+        <article className="dashboard-card">
+          <span className="dashboard-card__label">API sync status</span>
+          <strong>
+            {syncStatus === 'loading' && 'Syncing user...'}
+            {syncStatus === 'success' && 'Authenticated with backend'}
+            {syncStatus === 'error' && 'Backend sync failed'}
+            {syncStatus === 'idle' && 'Pending'}
+          </strong>
+        </article>
+
+        <article className="dashboard-card">
+          <span className="dashboard-card__label">Mongo role</span>
+          <strong>{backendUser?.role || 'Not loaded yet'}</strong>
+        </article>
+
+        <article className="dashboard-card">
+          <span className="dashboard-card__label">Mongo user id</span>
+          <strong>{backendUser?._id || 'Not loaded yet'}</strong>
+        </article>
       </div>
+
+      {syncError ? (
+        <p className="dashboard-error">
+          Backend auth check failed: {syncError}
+        </p>
+      ) : null}
     </section>
   )
 }

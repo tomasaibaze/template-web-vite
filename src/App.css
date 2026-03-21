@@ -276,6 +276,12 @@
   color: var(--text-strong);
 }
 
+.dashboard-error {
+  margin-top: 18px;
+  color: #8e2f16;
+  font-weight: 600;
+}
+
 @keyframes slide-up {
   from {
     opacity: 0;
