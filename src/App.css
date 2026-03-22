@@ -185,8 +185,7 @@
 .loading-card {
   border: 1px solid rgba(120, 92, 61, 0.16);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 248, 238, 0.92)),
-    var(--surface);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 248, 238, 0.92)), var(--surface);
   border-radius: 28px;
   box-shadow: var(--shadow-soft);
 }
@@ -297,6 +296,87 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* ── Dark Auth Pages ─────────────────────────── */
+.auth-dark-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  gap: 32px;
+  background: linear-gradient(140deg, var(--sesa-dark-bg-start), var(--sesa-dark-bg-end));
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.auth-dark-layout {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: 100%;
+  max-width: 1080px;
+}
+
+.auth-dark-left {
+  flex: 0 0 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.auth-dark-logo {
+  height: 52px;
+  object-fit: contain;
+  display: block;
+}
+
+.auth-dark-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.auth-dark-header h2 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--sesa-dark-text);
+  letter-spacing: 0.38px;
+  margin: 0 0 8px;
+  line-height: 1.5;
+}
+
+.auth-dark-header p {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--sesa-dark-text-muted);
+  margin: 0;
+}
+
+.auth-dark-copyright {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  color: var(--sesa-dark-text-faint);
+  text-align: center;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .auth-dark-layout {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .auth-dark-left {
+    flex: none;
+    width: 100%;
+    align-items: center;
+    text-align: center;
   }
 }
 

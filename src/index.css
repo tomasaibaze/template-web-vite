@@ -12,6 +12,29 @@
     0 10px 24px rgba(83, 44, 18, 0.08);
   --sans: 'Sora', 'Trebuchet MS', sans-serif;
   --heading: 'Space Grotesk', 'Avenir Next', sans-serif;
+
+  /* ── SESA Dark Theme Palette ───────────────── */
+  /* Fondos oscuros */
+  --sesa-dark-bg-start:     #1f2e39;   /* gradiente inicio */
+  --sesa-dark-bg-end:       #151820;   /* gradiente fin */
+  --sesa-dark-surface:      #ffffff0f; /* rgba(255,255,255,0.06) — card bg */
+  --sesa-dark-border:       #ffffff1f; /* rgba(255,255,255,0.12) — card border */
+  --sesa-dark-shadow:       #00000066; /* rgba(0,0,0,0.40) — card shadow */
+  --sesa-dark-divider:      #ffffff1a; /* rgba(255,255,255,0.10) — separadores */
+  /* Inputs */
+  --sesa-dark-input-bg:     #ffffff05; /* rgba(255,255,255,0.02) */
+  --sesa-dark-input-border: #ffffff26; /* rgba(255,255,255,0.15) */
+  /* Texto sobre fondo oscuro */
+  --sesa-dark-text:         #ffffff;   /* headings */
+  --sesa-dark-text-muted:   #ffffff99; /* rgba(255,255,255,0.60) — subtítulos */
+  --sesa-dark-text-soft:    #ffffff80; /* rgba(255,255,255,0.50) — links secundarios */
+  --sesa-dark-text-faint:   #ffffff4d; /* rgba(255,255,255,0.30) — copyright */
+  /* Acento / Rojo SESA */
+  --sesa-accent:            #f81939;   /* botón principal */
+  --sesa-accent-dark:       #c41430;   /* botón gradiente fin */
+  --sesa-accent-glow:       #f819394d; /* rgba(248,25,57,0.30) — shadow botón */
+  --sesa-accent-overlay:    #f8193926; /* rgba(248,25,57,0.15) — icon bg en OTP */
+  --sesa-danger:            #ff6b6b;   /* errores / validaciones */
   font: 16px/1.55 var(--sans);
   color: var(--text-muted);
   background:

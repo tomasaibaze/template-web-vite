@@ -1,4 +1,5 @@
 import { ClerkProvider } from '@clerk/clerk-react'
+import { esES } from '@clerk/localizations'
 import { useNavigate } from 'react-router-dom'
 import App from '../App.jsx'
 import { clerkPublishableKey, clerkUrls } from '../lib/clerk.js'
@@ -9,6 +10,7 @@ function AppProviders() {
   return (
     <ClerkProvider
       publishableKey={clerkPublishableKey}
+      localization={esES}
       routerPush={(to) => navigate(to)}
       routerReplace={(to) => navigate(to, { replace: true })}
       signInUrl={clerkUrls.signIn}

@@ -1,27 +1,29 @@
 import { SignIn } from '@clerk/clerk-react'
 import { clerkUrls } from '../lib/clerk.js'
+import { clerkDarkTheme } from '../lib/clerkDarkTheme.js'
+import sesaLogo from '../assets/sesa-logo.png'
 
 function SignInPage() {
   return (
-    <section className="auth-shell">
-      <div className="auth-panel">
-        <p className="eyebrow">Welcome back</p>
-        <h1>Sign in to reach your protected dashboard.</h1>
-        <p className="auth-text">
-          This flow is powered by the same Clerk configuration already used in
-          `Sesa-web-app`.
-        </p>
-      </div>
-
-      <div className="auth-card">
+    <div className="auth-dark-page">
+      <div className="auth-dark-layout">
+        <div className="auth-dark-left">
+          <img className="auth-dark-logo" src={sesaLogo} alt="SESA Mobility" />
+          <div className="auth-dark-header">
+            <h2>Iniciar Sesión</h2>
+            <p>Accede con tus credenciales corporativas</p>
+          </div>
+        </div>
         <SignIn
           path={clerkUrls.signIn}
           routing="path"
           signUpUrl={clerkUrls.signUp}
           fallbackRedirectUrl={clerkUrls.signInFallback}
+          appearance={clerkDarkTheme}
         />
       </div>
-    </section>
+      <p className="auth-dark-copyright">© 2026 Grupo SESA - Todos los derechos reservados</p>
+    </div>
   )
 }
 
